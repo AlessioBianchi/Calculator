@@ -1,5 +1,5 @@
 # Calculator
-Simple calculator implementing the MCV pattern
+Simple calculator implementing the MVC pattern
 
 # Controller
 The Controller allows the Model and the View to communicate
