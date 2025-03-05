@@ -25,7 +25,7 @@ public class CalculatorController implements Observer {
 
     private class CalculateListener implements ActionListener {
         public void actionPerformed (ActionEvent e) {
-            int numberUserPressed = Integer.parseInt(((JButton)e.getSource()).getText());
+            String numberUserPressed = ((JButton)e.getSource()).getText();
             model.addDigit(numberUserPressed);
         }
     }
@@ -34,13 +34,33 @@ public class CalculatorController implements Observer {
         @Override
         public void actionPerformed(ActionEvent e) {
             String operationPressed = ((JButton)e.getSource()).getText();
-
-            if (Objects.equals(operationPressed, "=")) {
-                model.setNumber(model.makeOperation());
-            } else {
-                model.setCurrentTypeOfOperation(operationPressed);
-                model.setPreviousNumber(model.getNumber());
-                model.setNumber(0);
+            
+            model.incCounter();
+            
+            switch (operationPressed) {
+            case ".":
+            	if (Objects.equals(operationPressed, ".") && !model.getNumber().contains(".")) {
+                	model.addDigit(operationPressed);
+                }
+            	break;
+            case "+/-":
+            	double n = Double.parseDouble(model.getNumber());
+            	n = n * (-1);
+            	model.setNumber(String.valueOf(n));
+            	break;
+            case "=":
+            	double result = model.makeOperation();
+            	model.setNumber(String.valueOf(result));
+            	break;
+        	default:
+        		if (model.getCounter() >= 2) {
+        			model.setPreviousNumber(String.valueOf(model.makeOperation()));
+        		} else {
+        			model.setPreviousNumber(model.getNumber());
+        		}
+        		model.setCurrentTypeOfOperation(operationPressed);
+                model.setNumber("0");
+        		break;
             }
         }
     }
