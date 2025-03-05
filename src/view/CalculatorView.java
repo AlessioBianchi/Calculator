@@ -9,7 +9,7 @@ public class CalculatorView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JButton jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8, jb9, jb0, jbClear, jbAdd, jbSubstract, jbMultiply, jbDivide, jbEqual;
+	private JButton jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8, jb9, jb0, jbClear, jbAdd, jbSubstract, jbMultiply, jbDivide, jbEqual, jbDec, jbNeg;
     private JTextField jtfResult, jtfPreviousOperation;
 
     public CalculatorView() {
@@ -62,6 +62,8 @@ public class CalculatorView extends JFrame {
         jbMultiply = new JButton("x");
         jbDivide = new JButton("/");
         jbEqual = new JButton("=");
+        jbDec = new JButton(".");
+        jbNeg = new JButton("+/-");
 
         jtfPreviousOperation = new JTextField(10);
         jtfPreviousOperation.setFont(font);
@@ -86,11 +88,11 @@ public class CalculatorView extends JFrame {
         gridConstraints.gridwidth = 1;
         gridConstraints.gridx = 1;
         gridConstraints.gridy = 1;
-        jpMain.add(jb1, gridConstraints);
+        jpMain.add(jb7, gridConstraints);
         gridConstraints.gridx = 2;
-        jpMain.add(jb2, gridConstraints);
+        jpMain.add(jb8, gridConstraints);
         gridConstraints.gridx = 3;
-        jpMain.add(jb3, gridConstraints);
+        jpMain.add(jb9, gridConstraints);
         gridConstraints.gridx = 4;
         jpMain.add(jbClear, gridConstraints);
 
@@ -108,18 +110,22 @@ public class CalculatorView extends JFrame {
         // Third row
         gridConstraints.gridy = 3;
         gridConstraints.gridx = 1;
-        jpMain.add(jb7, gridConstraints);
+        jpMain.add(jb1, gridConstraints);
         gridConstraints.gridx = 2;
-        jpMain.add(jb8, gridConstraints);
+        jpMain.add(jb2, gridConstraints);
         gridConstraints.gridx = 3;
-        jpMain.add(jb9, gridConstraints);
+        jpMain.add(jb3, gridConstraints);
         gridConstraints.gridx = 4;
         jpMain.add(jbAdd, gridConstraints);
 
         // Fourth row
-        gridConstraints.gridx = 2;
         gridConstraints.gridy = 4;
+        gridConstraints.gridx = 1;
+        jpMain.add(jbNeg, gridConstraints);
+        gridConstraints.gridx = 2;
         jpMain.add(jb0, gridConstraints);
+        gridConstraints.gridx = 3;
+        jpMain.add(jbDec, gridConstraints);
         gridConstraints.gridx = 4;
         jpMain.add(jbEqual, gridConstraints);
 
@@ -131,8 +137,8 @@ public class CalculatorView extends JFrame {
         this.setVisible(true);
     }
 
-    public void setNumber (double number) {
-        jtfResult.setText(Double.toString(number));
+    public void setNumber (String number) {
+        jtfResult.setText(number);
     }
 
     public void setPreviousNumber(double previousNumber, String operation) {
@@ -158,5 +164,7 @@ public class CalculatorView extends JFrame {
         jbSubstract.addActionListener(listenForOperation);
         jbMultiply.addActionListener(listenForOperation);
         jbDivide.addActionListener(listenForOperation);
+        jbNeg.addActionListener(listenForOperation);
+        jbDec.addActionListener(listenForOperation);
     }
 }
