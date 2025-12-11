@@ -18,8 +18,6 @@ public class StringToNumberConverterTest {
 
     @Test
     void testInvalidNumberThrowsException() {
-        assertThrows(RuntimeException.class, () -> {
-            converter.convert("abc");
-        });
+        assertThrows(RuntimeException.class, () -> converter.convert("abc"));
     }
 }

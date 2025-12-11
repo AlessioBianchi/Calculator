@@ -11,7 +11,7 @@ public class View {
     private static final int STANDARD_HEIGHT = 450;
     private static final int STANDARD_WIDTH = 350;
 
-    private JTextField display;
+    private final JTextField display;
 
     private static final JButton[][] DEFAULT_BUTTONS = {
             { new JButton("<="), new JButton("AC"), new JButton("%"), new JButton("/") },
