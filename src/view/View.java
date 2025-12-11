@@ -74,17 +74,17 @@ public class View {
                 .forEach(button -> button.addActionListener(listener));
     }
 
-    public JTextField getDisplay() {
-        return this.display;
-    }
+//    public JTextField getDisplay() {
+//        return this.display;
+//    }
 
-    public JButton[] getAllButtons(){
-        return Optional.of(DEFAULT_BUTTONS)
-                .map(buttons -> Arrays.stream(buttons)
-                        .flatMap(Arrays::stream)
-                        .toArray(JButton[]::new))
-                .orElse(new JButton[0]);
-    }
+//    public JButton[] getAllButtons(){
+//        return Optional.of(DEFAULT_BUTTONS)
+//                .map(buttons -> Arrays.stream(buttons)
+//                        .flatMap(Arrays::stream)
+//                        .toArray(JButton[]::new))
+//                .orElse(new JButton[0]);
+//    }
 
     public JButton[] getNumberButtons(){
         return Optional.of(DEFAULT_BUTTONS)
